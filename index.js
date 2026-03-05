@@ -159,6 +159,7 @@ function updateCart() {
     cartContainer.innerHTML = "";
     if (cart.length === 0) {
         emptyCartMsg.classList.remove("hidden")
+        totalPrice.textContent = `$${0}`;
         return;
     }
     emptyCartMsg.classList.add("hidden")
