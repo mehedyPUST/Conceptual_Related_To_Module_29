@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- daisy tailwind -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+
+
+</head>
+
+<body class=" w-29/30 mx-auto bg-amber-50">
+
+    <main class="container mx-auto ">
+        <h2 class="font-bold text-green-500 text-[32px]">Choose Your Trees</h2>
+
+        <div class="grid grid-cols-12 gap-5">
+
+            <!-- categories  -->
+
+            <div class="col-span-3 bg-gray-100 ">
+                <div class="space-y-3">
+                    <h2>Categories</h2>
+                    <button class="btn btn-success w-full" id="allTrssBtn">All Trees</button>
+
+                    <!-- cate container -->
+                    <div id="categoriesContainer" class=" space-y-3">
+
+                        <!-- categories will be added here  -->
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- trees -->
+            <div class="col-span-6 bg-green-100">
+                <div id="treesContainer" class="grid grid-cols-1 md:grid-cols-3 gap-3">
+
+
+
+                    <div class="card bg-base-100 shadow-sm">
+                        <figure>
+                            <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                                alt="Shoes" />
+                        </figure>
+                        <div class="card-body">
+                            <h2 class="card-title">Card Title</h2>
+                            <p class=" line-clamp-1">A card component has a figure, a body part, and inside body there
+                                are title and actions parts</p>
+                            <div class="badge badge-outline badge-success">Success</div>
+                            <div class=" flex justify-between items-center gap-2">
+                                <h2 class="font-bold text-xl text-green-500 ">$5000</h2>
+                                <button class="btn btn-primary">Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="card bg-base-100 shadow-sm">
+                        <figure>
+                            <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                                alt="Shoes" />
+                        </figure>
+                        <div class="card-body">
+                            <h2 class="card-title">Card Title</h2>
+                            <p class="text-justify">A card component has a figure, a body part, and inside body there
+                                are title and actions
+                                parts</p>
+                            <div class="badge badge-outline badge-success">Success</div>
+                            <div class=" flex justify-between items-center gap-2">
+                                <h2 class="font-bold text-xl text-green-500 ">$5000</h2>
+                                <button class="btn btn-primary">Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card bg-base-100 shadow-sm">
+                        <figure>
+                            <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                                alt="Shoes" />
+                        </figure>
+                        <div class="card-body">
+                            <h2 class="card-title">Card Title</h2>
+                            <p class="text-justify">A card component has a figure, a body part, and inside body there
+                                are title and actions
+                                parts</p>
+                            <div class="badge badge-outline badge-success">Success</div>
+                            <div class=" flex justify-between items-center gap-2">
+                                <h2 class="font-bold text-xl text-green-500 ">$5000</h2>
+                                <button class="btn btn-primary">Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+
+
+            <!-- cart -->
+            <div class="col-span-3 bg-blue-100">
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script src="./index.js"></script>
+</body>
+
+</html>
