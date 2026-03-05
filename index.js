@@ -9,7 +9,10 @@ const modalCategory = document.getElementById('modalCategory');
 const modalDescription = document.getElementById('modalDescription');
 const modalPrice = document.getElementById('modalPrice');
 const modalTitle = document.getElementById('modalTitle');
-
+const cartContainer = document.getElementById('cartContainer');
+const totalPrice = document.getElementById('totalPrice');
+const emptyCartMsg = document.getElementById('emptyCartMsg');
+let cart = [];
 function showLoading() {
     loadingSpinner.classList.remove('hidden');
     loadingSpinner.classList.add('flex');
@@ -111,7 +114,7 @@ function displayTrees(trees) {
                 <div class="badge badge-outline badge-success">${tree.category}</div>
                 <div class=" flex justify-between items-center gap-2">
                     <h2 class="font-bold text-xl text-green-500 ">$${tree.price}</h2>
-                    <button class="btn btn-primary bg-green-500 border-none">Cart</button>
+                    <button class="btn btn-primary bg-green-500 border-none" onclick="addToCart(${tree.id}, '${tree.name}', ${tree.price})">Cart</button>
                 </div>
             </div>
 `;
@@ -135,5 +138,61 @@ async function openTreeModal(treeId) {
     treeDetailsModal.showModal();
 }
 
+function addToCart(id, name, price) {
+    console.log(id, name, price, 'add to cart ');
+    const existingItem = cart.find(item => item.id === id);
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            id,
+            name,
+            price,
+            quantity: 1
+        });
+    }
+
+    updateCart();
+}
+
+function updateCart() {
+    cartContainer.innerHTML = "";
+    if (cart.length === 0) {
+        emptyCartMsg.classList.remove("hidden")
+        return;
+    }
+    emptyCartMsg.classList.add("hidden")
+
+    let total = 0;
+    console.log(cart);
+    cart.forEach(item => {
+        total = total + item.price * item.quantity;
+        const cartItem = document.createElement("div");
+        cartItem.className = "card card-body shadow-2xl bg-green-100"
+        cartItem.innerHTML = `
+          <div class="flex justify-between items-center">
+                <div>
+                    <h2>${item.name}</h2>
+                    <p>$${item.price} x ${item.quantity}</p>
+                </div>
+                <button class="btn btn-ghost" onclick= "removeFromCart(${item.id})">X</button>
+            </div>
+            <p class=" text-right font-semibold text-xl">$${item.price * item.quantity}</p>
+         
+         `;
+        cartContainer.appendChild(cartItem);
+    })
+    totalPrice.innerText = `$${total}`;
+}
+
+function removeFromCart(treeId) {
+    // console.log(treeId, "treeId");
+    const updatedCartElements = cart.filter(item => item.id != treeId);
+    cart = updatedCartElements;
+    updateCart();
+}
+
+
 loadCategories();
 loadTrees();
+updateCart()
